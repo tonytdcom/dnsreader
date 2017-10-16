@@ -7,7 +7,8 @@ gem 'rails', '4.2.5'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'will_paginate', '~> 3.0' 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# gem 'sqlite3'
+gem 'mysql2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -39,7 +40,7 @@ gem 'rubysl-resolv'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-group :development, :test do
+group :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 end
@@ -57,4 +58,4 @@ end
 group :production do
     gem 'unicorn'
     gem 'mysql2'
-  end
+end
