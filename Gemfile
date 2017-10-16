@@ -32,7 +32,7 @@ gem 'bcrypt', '~> 3.1.7'
 # pdf output stuff
 gem 'wkhtmltopdf-binary'
 gem 'wicked_pdf'
-
+gem 'rubysl-resolv'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
