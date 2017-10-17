@@ -1,6 +1,6 @@
 
 <% require 'csv' %>
-<% CSV.foreach("./tmp/domains.csv") do |row|%>
+<% CSV.foreach("./public/policedomains.csv") do |row|%>
 
 <%row = row[0]%>
 <p><%= row%></p>
