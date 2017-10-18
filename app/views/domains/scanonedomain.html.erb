@@ -5,7 +5,7 @@
         <% @domains.each do |domain| %>
         <%= domain %>
          <% host = domain.domain %>
-         <%   records = dns.getresources(host, Resolv::DNS::Resource::IN::TXT) %>
+         <%   records = dns.getresources(host, Resolv::DNS::Resource::IN::TXT).force_encoding(Encoding::UTF_8) %>
             <% records.each do |record| %>
             <% txt = record.strings.join %>
             
