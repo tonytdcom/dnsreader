@@ -7,7 +7,7 @@
          <% host = domain.domain %>
          <%   records = dns.getresources(host, Resolv::DNS::Resource::IN::TXT).force_encoding(Encoding::UTF_8) %>
             <% records.each do |record| %>
-            <% txt.force_encoding(Encoding::UTF_8) = record.strings.join %>
+            <% txt = record.strings.join.force_encoding(Encoding::UTF_8) %>
             
                 <% if txt.include?('v=spf1')%>
                   <% domain.update_attribute(:spf, txt) %>
