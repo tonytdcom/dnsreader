@@ -5,9 +5,8 @@
         <% @domains.each do |domain| %>
         <%= domain %>
          <% host = domain.domain %>
-         <%   records = dns.getresources(host, Resolv::DNS::Resource::IN::TXT).force_encoding("UTF-8") %>
+         <%   records.force_encoding("UTF-8") = dns.getresources(host, Resolv::DNS::Resource::IN::TXT) %>
             <% records.each do |record| %>
-            <% record.force_encoding("UTF-8") %>
             <% txt = record.strings.join %>
             
                 <% if txt.include?('v=spf1')%>
