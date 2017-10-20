@@ -7,8 +7,8 @@ gem 'rails', '4.2.5'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'will_paginate', '~> 3.0' 
 # Use sqlite3 as the database for Active Record
-# gem 'sqlite3'
-gem 'mysql2'
+gem 'sqlite3'
+# gem 'mysql2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -57,5 +57,5 @@ end
 
 group :production do
     gem 'unicorn'
-    gem 'mysql2'
+#    gem 'mysql2'
 end

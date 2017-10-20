@@ -4,10 +4,11 @@
      <% Resolv::DNS.open do |dns| %>
         <% @domains.each do |domain| %>
         <%= domain %>
-         <% host = domain.domain %>
+         <% host = (domain.domain, encoding: "UTF-8") %>
          <%   records = dns.getresources(host, Resolv::DNS::Resource::IN::TXT) %>
             <% records.each do |record| %>
-            <% txt = record.strings.encode("UTF-8").join %>
+            <% record = ( record, encoding: "UTF-8") %>
+            <% txt = record.strings.join %>
             
                 <% if txt.include?('v=spf1')%>
                   <% domain.update_attribute(:spf, txt) %>
