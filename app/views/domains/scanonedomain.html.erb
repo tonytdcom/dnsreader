@@ -7,8 +7,8 @@
          <% records = dns.getresources(host, Resolv::DNS::Resource::IN::TXT) %>
          <% records.each do |record| %>
             <% txt = record.strings.join %>
+            <% txt.force_encoding('UTF-8') %>
                 <%  if txt.include?('v=spf1') %>
-                <% txt.force_encoding('UTF-8') %>
                   <% domain.update_attribute(:spf, txt) %>
                   <% domain.save %>
                 <% end %>
@@ -17,9 +17,9 @@
                  <% recordds = dns.getresources(hostd, Resolv::DNS::Resource::IN::TXT) %>
                 <% recordds.each do |recordd| %>
                  <% txtd = recordd.strings.join %>
+                 <% txtd.force_encoding('UTF-8') %>
                   <% if txtd.include?('v=DMARC1;')%>
-                  <% txtd.force_encoding('UTF-8') %>
-                  <% domain.update_attribute(:dmarc, txtd) %>
+                   <% domain.update_attribute(:dmarc, txtd) %>
                   <% domain.save %>
                   <% end %>
                 <% end %>
