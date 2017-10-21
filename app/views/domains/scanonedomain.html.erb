@@ -3,7 +3,6 @@
 
      <% Resolv::DNS.open do |dns| %>
         <% @domains.each do |domain| %>
-        <%= domain.domain %>
          <% host = domain.domain %>
          <% records = dns.getresources(host, Resolv::DNS::Resource::IN::TXT) %>
          <% records.each do |record| %>
@@ -13,6 +12,15 @@
                   <% domain.save %>
                 <% end %>
             <% end %>
+           <% hostd = "_dmarc.#{host}" %>
+                 <% recordds = dns.getresources(hostd, Resolv::DNS::Resource::IN::TXT) %>
+                <% recordds.each do |recordd| %>
+                 <% txtd = recordd.strings.join %>
+                  <% if txtd.include?('v=DMARC1;')%>
+                  <% domain.update_attribute(:dmarc, txtd) %>
+                  <% domain.save %>
+                  <% end %>
+                <% end %>
          <% end %>
      <% end %>
  <p>Finished</p>             
