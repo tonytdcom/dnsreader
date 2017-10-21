@@ -8,10 +8,10 @@
          <% records = dns.getresources(host, Resolv::DNS::Resource::IN::TXT) %>
          <% records.each do |record| %>
             <% txt = record.strings.join %>
-                <% if txt.include?('v=spf1')%>
+                <% # if txt.include?('v=spf1')%>
                   <%  #domain.update_attribute(:spf, txt) %>
                   <% #domain.save %>
-                  <%= txt %>
+                  <%= record %>
                 <% end %>
         <% end %>
          <% end %>
