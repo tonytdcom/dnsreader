@@ -3,17 +3,17 @@
 
      <% Resolv::DNS.open do |dns| %>
         <% @domains.each do |domain| %>
-        <%= domain %>
+        <%= domain.domain %>
          <% host = domain.domain %>
          <% records = dns.getresources(host, Resolv::DNS::Resource::IN::TXT) %>
          <% records.each do |record| %>
             <% txt = record.strings.join %>
-                <% # if txt.include?('v=spf1')%>
+                <%  if txt.include?('v=spf1')%>
                   <%  #domain.update_attribute(:spf, txt) %>
                   <% #domain.save %>
-                  <%= record %>
+                  <%= txt %>
                 <% end %>
-        <% end %>
+            <% end %>
          <% end %>
      <% end %>
  <p>Finished</p>             
