@@ -41,11 +41,11 @@ class DomainsController < ApplicationController
   end
   
   def scanonedomain
-     @domains = Domain.all
+     @domains = Domain.all.first(5)
           if params[:search]
            @domains = Domain.search(params[:search]).order("domain ASC")
           else
-          @domains = Domain.all.order("domain ASC")
+          @domains = Domain.all.first(5)
           end
      
   end
