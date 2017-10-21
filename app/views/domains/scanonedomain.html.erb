@@ -9,9 +9,8 @@
          <% records.each do |record| %>
             <% txt = record.strings.join %>
                 <%  if txt.include?('v=spf1')%>
-                  <%  #domain.update_attribute(:spf, txt) %>
-                  <% #domain.save %>
-                  <%= txt %>
+                  <%  domain.update_attribute(:spf, txt) %>
+                  <% domain.save %>
                 <% end %>
             <% end %>
          <% end %>
