@@ -20,10 +20,10 @@ test:
   timeout: 5000
 
 production:
-  adapter: sqlite3
+  adapter: mysql2
   encoding: utf8
   database: dnsreader
   username: root
   password: 2etarx5nkn
-  host: 172.31.10.220
+  host: 172.31.10.207
   port: 3306
