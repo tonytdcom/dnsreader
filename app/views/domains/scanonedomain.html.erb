@@ -4,9 +4,9 @@
      <% Resolv::DNS.open do |dns| %>
         <% @domains.each do |domain| %>
          <% host = domain.domain %>
+         <% host.force_encoding('UTF-8') %>
          <% records = dns.getresources(host, Resolv::DNS::Resource::IN::TXT) %>
          <% records.each do |record| %>
-         <% record.force_encoding('UTF-8') %>
             <% txt = record.strings.join %>
             <% txt.force_encoding('UTF-8') %>
                 <%  if txt.include?('v=spf1') %>
@@ -17,7 +17,6 @@
            <% hostd = "_dmarc.#{host}" %>
                  <% recordds = dns.getresources(hostd, Resolv::DNS::Resource::IN::TXT) %>
                 <% recordds.each do |recordd| %>
-                <% recordd.force_encoding('UTF-8') %>
                  <% txtd = recordd.strings.join %>
                  <% txtd.force_encoding('UTF-8') %>
                   <% if txtd.include?('v=DMARC1;')%>
