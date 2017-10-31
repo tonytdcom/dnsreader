@@ -2,18 +2,7 @@
 <p>RUNNING</p>
 
      <% Resolv::DNS.open do |dns| %>
-        <% @domains.each do |domain| %>
-         <% host = domain.domain %>
-         <% host.to_s.force_encoding('UTF-8') %>
-         <% records = dns.getresources(host, Resolv::DNS::Resource::IN::TXT) %>
-         <% records.each do |record| %>
-            <% txt = record.strings.join %>
-            <% txt.to_s.force_encoding('UTF-8') %>
-                <%  if txt.include?('v=spf1') %>
-                  <% domain.update_attribute(:spf, txt) %>
-                  <% domain.save %>
-                <% end %>
-            <% end %>
+ 
            <% hostd = "_dmarc.#{host}" %>
                  <% recordds = dns.getresources(hostd, Resolv::DNS::Resource::IN::TXT) %>
                 <% recordds.each do |recordd| %>
