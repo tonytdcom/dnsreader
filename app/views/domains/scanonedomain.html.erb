@@ -2,7 +2,8 @@
 <p>RUNNING</p>
 
      <% Resolv::DNS.open do |dns| %>
- 
+     <% @domains.each do |domain| %>
+      <% host = domain.domain %>
            <% hostd = "_dmarc.#{host}" %>
                  <% recordds = dns.getresources(hostd, Resolv::DNS::Resource::IN::TXT) %>
                 <% recordds.each do |recordd| %>
@@ -13,7 +14,7 @@
                   <% domain.save %>
                   <% end %>
                 <% end %>
-         <% end %>
+       <% end %>
      <% end %>
  <p>Finished</p>             
  <%= link_to 'Show Domain', domains_path %>
