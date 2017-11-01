@@ -6,14 +6,7 @@
       <% host = domain.domain %>
            <% hostd = "_dmarc.#{host}" %>
            <%= hostd %>
-                 <% recordds = dns.getresources(hostd, Resolv::DNS::Resource::IN::TXT) %>
-                <% recordds.each do |recordd| %>
-                 <% txtd = recordd.strings.join %>
-                  <% if txtd.include?("v=DMARC1;")%>
-                   <% domain.update_attribute(:dmarc, txtd) %>
-                  <% domain.save %>
-                  <% end %>
-                <% end %>
+                
        <% end %>
      <% end %>
  <p>Finished</p>             
