@@ -5,8 +5,9 @@
      <% @domains.each do |domain| %>
       <% host = domain.domain %>
            <% hostd = "_dmarc.#{host}" %>
-           <%= hostd %>
-                
+           <% recordds = dns.getresources(hostd, Resolv::DNS::Resource::IN::TXT) %>
+           <%= recordds %>
+
        <% end %>
      <% end %>
  <p>Finished</p>             
